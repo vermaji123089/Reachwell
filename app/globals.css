@@ -98,3 +98,25 @@ html:not([data-scroll="0"]) .navbar {
 .space-links:hover {
   letter-spacing: 1px;
 }
+
+
+.sublink {
+  border: 2px solid red;
+    z-index: 999;
+    top: 39px;
+    left: 14px;
+}
+@media screen and (max-width:1001px) {
+.hiddenN{
+  display: none;
+}
+.hmBurger{
+  display: block !important;
+}
+}
+@media screen and (max-width:500px) {
+  
+  .overflowOnM{
+    width: 100% !important;
+  }
+}

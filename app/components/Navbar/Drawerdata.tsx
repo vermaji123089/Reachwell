@@ -6,14 +6,17 @@ interface NavigationItem {
   name: string;
   href: string;
   current: boolean;
+  sublinks?: { name: string; href: string }[];
 }
 
 const navigation: NavigationItem[] = [
 
-  { name: 'Home', href: '/', current: true },
+  { name: 'Home', href: '/', current: false },
   { name: 'About', href: '/about', current: false },
   { name: 'Service', href: '/service', current: false },
-  { name: 'Our Network', href: '/ournetwork', current: false },
+ 
+  { name: "DOMESTIC [Our Network]", href: '/domestic', current: false },
+  { name: "INTERNATIONAL [Our Network]", href:'/International', current: false  },
   { name: 'Pincode locator', href: '/pincodelocator', current: false },
   { name: 'Join Us', href: '/join', current: false },
   { name: 'Pickup Request', href: '/pickuprequest', current: false },
@@ -28,7 +31,7 @@ const Data = () => {
   return (
     <div className="rounded-md max-w-sm w-full mx-auto">
       <div className="flex-1 space-y-4 py-1">
-        <div className="sm:block">
+        <div className="hmBurger">
           <div className="space-y-1 px-5 pt-2 pb-3">
             {navigation.map((item) => (
               <Link
