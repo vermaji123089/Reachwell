@@ -3,7 +3,7 @@ import Head from 'next/head';
 import './globals.css';
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata = {
   title: 'Reachwell Worldwide Express',
   description: 'Global Logistics Partner - Logistics through innovation, dedication, and technology',
