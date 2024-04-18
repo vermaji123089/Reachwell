@@ -29,7 +29,7 @@ const Drawer = ({ children, isOpen, setIsOpen }: DrawerProps) => {
                     <header className="p-4 flex items-center">
                         <img
                         className="h-30px w-[50%] mx-auto"
-                        src={"/assets/logo/Logo.webp"}
+                        src={"/assets/logo/logo.webp"}
                        
                         alt="Courses-Logo"
                         onClick={() => {
