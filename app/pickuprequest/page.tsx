@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { FormEvent } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const people = [
   {
     id: 1,
@@ -13,10 +14,37 @@ const people = [
     name: "DG Cargo",
   },
 ];
+const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
 
+  const formData = new FormData(event.target as HTMLFormElement);
+
+  try {
+    const response = await fetch('/api/sendmail', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      // Email sent successfully
+      toast.success("Email sent successfully");
+      console.log('Email sent successfully');
+      setTimeout(() => {
+        window.location.href = "/pickuprequest";
+      }, 3000);
+    } else {
+      toast.error("Something went Wrorng");
+      // Error handling
+      console.error('Error sending email');
+    }
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
+};
 const pickuprequest = () => {
   return (
     <div>
+      <ToastContainer />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
@@ -32,8 +60,8 @@ const pickuprequest = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
-            <div className="lg:flex  ">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="lg:flex "  >
               <div className="px-1">
                 <label
                   htmlFor="Form_port"
@@ -47,7 +75,7 @@ const pickuprequest = () => {
                     name="Form_port"
                     type="text"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -72,7 +100,7 @@ const pickuprequest = () => {
                     name="To_Port"
                     type="text"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -92,7 +120,7 @@ const pickuprequest = () => {
                     name="Weight_Kg"
                     type="text"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -117,7 +145,7 @@ const pickuprequest = () => {
                     name="Phone"
                     type="number"
                     required
-                    className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className=" block w-full rounded-md border-0 text-center py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -127,7 +155,7 @@ const pickuprequest = () => {
               <div className="px-1">
                 <label
                   htmlFor="date"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block  text-sm font-medium leading-6 text-gray-900"
                 >
                   Date
                 </label>
@@ -137,7 +165,7 @@ const pickuprequest = () => {
                     name="date"
                     type="date"
                     required
-                    className="block lg:w-[180px] w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block lg:w-[180px] text-center w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -185,32 +213,32 @@ const pickuprequest = () => {
                   id="textarea"
                   name="text"
                   required
-                  className="block  w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block text-center w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
             <div className="px-1">
               <label
                 htmlFor="textarea"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 text-gray-900 "
               >
-                Same Day{" "}
+                Same Day
               </label>
               <div className="mt-2 flex">
                 <input
                   type="radio"
                   id="yes"
-                  name="radioGroup"
+                  name="Same_day"
                   className="radio-button   "
                 />
                 <label className="px-3" htmlFor="yes">
-                  yes{" "}
+                  yes
                 </label>
 
                 <input
                   type="radio"
                   id="no"
-                  name="radioGroup"
+                  name="Same_day"
                   className="radio-button   "
                 />
                 <label className="px-3" htmlFor="no">
@@ -230,15 +258,7 @@ const pickuprequest = () => {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Start a 14 day free trial
-            </a>
-          </p>
+          
         </div>
       </div>
       <br />

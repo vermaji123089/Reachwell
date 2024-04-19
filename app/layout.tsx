@@ -3,6 +3,7 @@ import Head from 'next/head';
 import './globals.css';
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
   title: 'Reachwell Worldwide Express',
@@ -31,6 +32,7 @@ export default function RootLayout({
       </Head>
       <body>
         <Navbar />
+        
         {children}
         <Footer />
       </body>
