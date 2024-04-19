@@ -227,8 +227,9 @@ const pickuprequest = () => {
               <div className="mt-2 flex">
                 <input
                   type="radio"
-                  id="yes"
+                  id="sameDay"
                   name="Same_day"
+                  value={"yes"}
                   className="radio-button   "
                 />
                 <label className="px-3" htmlFor="yes">
@@ -237,8 +238,9 @@ const pickuprequest = () => {
 
                 <input
                   type="radio"
-                  id="no"
+                  id="sameDay"
                   name="Same_day"
+                  value={"No"}
                   className="radio-button   "
                 />
                 <label className="px-3" htmlFor="no">
