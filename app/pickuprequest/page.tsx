@@ -187,8 +187,7 @@ const pickuprequest = () => {
 </div>
 <div className='px-1' >
   <label htmlFor="textarea" className="block text-sm font-medium leading-6 text-gray-900">
-  Pickup address
-  </label>
+Same Day  </label>
   <div className="mt-2 flex">
   <input type="radio" id="yes" name="radioGroup" className="radio-button   "/>
 <label className='px-3' htmlFor="yes">yes </label>
