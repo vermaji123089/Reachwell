@@ -4,6 +4,9 @@ import Banner from '../components/Banner/Banner';
 import Table from '../components/Table/Table';
 const service = () => {
 
+
+    
+
   const featuresData = [
     {
       name: "Feature 1",
